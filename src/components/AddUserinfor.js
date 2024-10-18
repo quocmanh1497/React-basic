@@ -1,12 +1,12 @@
 import React from 'react'
 
 
-class UseInfor extends React.Component {
+class AddUseInfor extends React.Component {
 
     state = {
-        name: 'Manh',
+        name: '',
         address: 'Da Nang',
-        age: 27,
+        age: '',
     };
 
     handleOnChangeInput = (event) => {
@@ -23,13 +23,20 @@ class UseInfor extends React.Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state)
+        this.props.handleAddNewUser({
+            id: Math.floor((Math.random() * 100) + 1) + '-ramdom',
+            name: this.state.name,
+            age: this.state.age,
+        });
     }
 
     render() {
         return (
             <div>
-                My name is {this.state.name} and Im from {this.state.address} and age {this.state.age}
+                <h1 className='text-ellipsis font-sans underline'>
+                    My name is {this.state.name} and Im from {this.state.address} and Age {this.state.age}
+                </h1>
+
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
                     <label>Name </label>
                     <input
@@ -37,7 +44,6 @@ class UseInfor extends React.Component {
                         type="text"
                         onChange={(event) => this.handleOnChangeInput(event)}
                     />
-                    <button>submit</button>
 
                     <label>Age </label>
                     <input
@@ -45,11 +51,11 @@ class UseInfor extends React.Component {
                         type="text"
                         onChange={(event) => this.handleOnChangeAge(event)}
                     />
-                    <button>submit</button>
+                    <button>Submit</button>
                 </form>
             </div>
         )
     }
 }
 
-export default UseInfor;
+export default AddUseInfor;

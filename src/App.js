@@ -1,15 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
 import MyComponent from './components/MyComponent';
 import React from 'react';
+import './App.scss'
 
 class App extends React.Component {
 
   render() {
     return (
-      <div>Hello World
+      <div className='app-container'><h1 className='text-3xl font-bold underline'>Hello World</h1>
         <MyComponent></MyComponent>
       </div>
     );
